@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO </title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial;
+        }
+        nav{
+            background-color: grey;
+            padding: 13px 40px;
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-links{
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        .nav-links li a{
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-links li a:hover{
+            color: black;
+        }
+        .form-container{
+            width: 90%;
+            max-width: 900px;
+            margin: auto;
+            background:white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .form-group{
+            margin-bottom: 15px;
+            
+        }
+        label{
+            
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea{
+            width:400px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline:none;
+            
+        }
+        button{
+            
+            padding: 10px;
+            border: none;
+            background-color: grey;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover{
+            background-color: black;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px;
+        }
+        .table-container{
+            width: 90%;
+            margin: 30px auto;
+            text-align: center;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        .table-heading{
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table thead{
+            background-color: #8b8b8b;
+            color: white;
+            font-size: 15px;
+        }
+        table th{
+            background-color: gray;
+            color: white;
+        }
+        table th, table td{
+            border: 1px solid #cfcfcf;
+            padding: 15px;
+            text-align: center;
+        }
+        .mark-btn{
+            background-color: gray;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .mark-btn:hover{
+            background-color: #555;
+        }
+        .completed-btn{
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: bold;
+        }
+
+
+    </style>
+</head>
+<body>
+    <nav>
+        <div class = "logo">MY TODO LIST</div>
+        <ul class=" nav-links">
+            <li><a href="Home">Home</a></li>
+            <li><a href="About">About</a></li>
+            <li><a href="Contact">Contact</a></li>
+            </ul>
+    </nav>
+    <div class = "form-container">
+        <h2> TO-DO</h2>
+        <form action="/" method="POST"> 
+            <div class="form-group">
+                <label for="TODO">Title: </label>
+                <input type="text" name="title" id="TODO" placeholder="Enter your task">
+            </div>
+            <div class="form-group">
+                <label for="Description">Description:</label>
+                <input type="text" name="desc" id="Description" placeholder="Enter the Description">
+            </div>
+            <button type="Submit">Add Todo</button>
+        </form>
+    </div>
+    <div class="table-container">
+
+        <h2 class="table-heading">YOUR TODOS</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Sno</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Date_created</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for todo in allTodo %}
+                 <tr>
+                    <td>{{loop.index}}</td>
+                    <td>{{todo.Title}}</td>
+                    <td>{{todo.Description}}</td>
+                    <td>{{todo.Date_created}}</td>
+                    <td> 
+                        {% if todo.Completed == False %}
+                            <a href="/complete/{{todo.Sno}}">
+                                <button class="mark-btn"></button>
+                            </a>
+                        {% else %}
+                            <button class="completed-btn"></button>
+                                
+                        {% endif %}
+                    </td>
+                 </tr>
+                {% endfor %}
+                
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

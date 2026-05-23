@@ -1,0 +1,56 @@
+# 📝 Flask Todo List App
+
+A simple and clean Todo List web application built using **Flask**, **HTML**, **CSS**, and **SQLite**.
+
+Users can:
+- Add new todos
+- View all todos
+- Mark tasks as completed
+- Store data permanently using SQLite database
+
+---
+
+# 🚀 Features
+
+✅ Add Todo Tasks  
+✅ Store Todos in Database  
+✅ Mark Tasks as Completed  
+✅ Responsive UI  
+✅ Flask Backend  
+✅ SQLite Database  
+✅ Dynamic Rendering using Jinja2  
+
+---
+
+# 📂 Project Structure
+
+todoapp/
+│
+├── app.py
+├── todo.db
+├── templates/
+│ └── todo.html
+│
+├── static/
+│
+└── README.md
+
+---
+
+# 🛠️ Technologies Used
+
+- Python
+- Flask
+- Flask-SQLAlchemy
+- HTML5
+- CSS3
+- SQLite
+
+---
+
+# ⚙️ Installation
+
+## 1. Clone Repository
+
+```bash
+git clone <your-repository-link>
